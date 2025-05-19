@@ -1,22 +1,17 @@
-# dotfiles
-My dotfiles 🦍
+# My Ansible Dotfiles
+
+## Requirements
 
 ```
-dotfiles/
-├── inventory.ini
-├── playbook.yml
-├── bootstrap.sh
-├── roles/
-│   ├── zsh/
-│   │   └── tasks/main.yml
-│   ├── neovim/
-│   │   └── tasks/main.yml
-│   ├── git/
-│   │   └── tasks/main.yml
-│   └── packages/
-│       └── tasks/main.yml
-└── dotfiles/
-    ├── .zshrc
-    ├── .gitconfig
-    └── .config/nvim/init.vim
+- git
+- ansible
+```
+
+## Install & Usage
+
+```
+git clone https://github.com/ton-pseudo/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+chmod +x bootstrap.sh
+./bootstrap.sh
 ```
