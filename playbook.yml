@@ -1,0 +1,6 @@
+- name: Setup dotfiles and apps
+  hosts: localhost
+  become: true
+
+  roles:
+    - lazyvim
