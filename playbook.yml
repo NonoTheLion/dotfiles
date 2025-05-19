@@ -2,6 +2,8 @@
   hosts: localhost
 
   roles:
+    - update-cache
     - lazyvim
     - kitty
     - p10k
+    - tmux

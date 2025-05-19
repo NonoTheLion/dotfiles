@@ -1,9 +1,4 @@
 ---
-- name: "Debian | Update pacman cache"
-  become: true
-  ansible.builtin.apt:
-    update_cache: true
-
 - name: "Debian | Install ZSH"
   become: true
   ansible.builtin.apt:

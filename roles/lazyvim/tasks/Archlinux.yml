@@ -1,9 +1,4 @@
 ---
-- name: "Arch | Update pacman cache"
-  become: true
-  community.general.pacman:
-    update_cache: true
-
 - name: "Arch | Install Neovim"
   become: true
   community.general.pacman:
