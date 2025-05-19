@@ -8,15 +8,15 @@
   ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
   when: distribution_config.stat.exists
 
-- name: "Neovim | Config folder"
+- name: "Kitty | Config folder"
   ansible.builtin.file:
     mode: "0755"
-    path: "{{ ansible_user_dir }}/.config/nvim"
+    path: "{{ ansible_user_dir }}/.config/kitty"
     state: directory
 
-- name: "Neovim | Create symlink to role files directory"
+- name: "Kitty | Create symlink to role files directory"
   ansible.builtin.file:
     src: "{{ role_path }}/files"
-    dest: "{{ ansible_user_dir }}/.config/nvim"
+    dest: "{{ ansible_user_dir }}/.config/kitty"
     state: link
     force: true

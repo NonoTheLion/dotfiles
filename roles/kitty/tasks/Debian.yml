@@ -1,0 +1,12 @@
+---
+- name: "Debian | Update apt cache"
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+
+- name: "Debian | Install Kitty"
+  become: true
+  ansible.builtin.apt:
+    name: kitty
+    state: present
+
