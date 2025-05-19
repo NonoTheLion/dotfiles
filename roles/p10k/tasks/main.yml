@@ -8,15 +8,36 @@
   ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
   when: distribution_config.stat.exists
 
-- name: "Neovim | Config folder"
-  ansible.builtin.file:
-    mode: "0755"
-    path: "{{ ansible_user_dir }}/.config/nvim"
-    state: directory
+- name: "Getting script (Oh My Zsh)"
+  become: false
+  get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: /tmp/install_oh_my_zsh.sh
+    mode: '0755'
 
-- name: "Neovim | Create symlink to role files directory"
-  ansible.builtin.file:
-    src: "{{ role_path }}/files"
-    dest: "{{ ansible_user_dir }}/.config/nvim"
-    state: link
-    force: true
+- name: "Checking if Oh My Zsh is installed"
+  stat:
+    path: "{{ ansible_user_dir }}/.oh-my-zsh"
+  register: ohmyzsh_dir
+
+- name: "Installing Oh My Zsh"
+  become: false
+  shell: /tmp/install_oh_my_zsh.sh --unattended
+  args:
+    executable: /bin/bash
+  when: not ohmyzsh_dir.stat.exists
+
+- name: "Installing P10K"
+  become: false
+  git:
+    repo: https://github.com/romkatv/powerlevel10k.git
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/powerlevel10k"
+    depth: 1
+    update: no
+
+- name: "Setting p10K as ZSH theme"
+  become: false
+  replace:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    regexp: '^ZSH_THEME=".*"$'
+    replace: 'ZSH_THEME="powerlevel10k/powerlevel10k"'
