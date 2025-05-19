@@ -1,4 +1,4 @@
-# My Ansible Dotfiles
+# My Ansible Dotfiles 📁
 
 ## Requirements
 
@@ -15,3 +15,7 @@ cd ~/.dotfiles
 chmod +x bootstrap.sh
 ./bootstrap.sh
 ```
+
+---
+
+Inspired by [this repo](https://github.com/TechDufus/dotfiles)
