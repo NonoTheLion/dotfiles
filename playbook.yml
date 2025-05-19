@@ -4,3 +4,4 @@
   roles:
     - lazyvim
     - kitty
+    - p10k
