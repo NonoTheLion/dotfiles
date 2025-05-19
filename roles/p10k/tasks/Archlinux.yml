@@ -1,0 +1,30 @@
+---
+- name: "Arch | Update pacman cache"
+  become: true
+  community.general.pacman:
+    update_cache: true
+
+- name: "Arch | Install ZSH"
+  become: true
+  community.general.pacman:
+    name: zsh
+    state: present
+
+- name: "Arch | Getting script (Oh My Zsh)"
+  become: false
+  get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: /tmp/install_oh_my_zsh.sh
+    mode: '0755'
+
+- name: "Arch | Checking if Oh My Zsh is installed"
+  stat:
+    path: "{{ ansible_user_dir }}/.oh-my-zsh"
+  register: ohmyzsh_dir
+
+- name: "Arch | Installing Oh My Zsh"
+  become: false
+  shell: /tmp/install_oh_my_zsh.sh --unattended
+  args:
+    executable: /bin/bash
+  when: not ohmyzsh_dir.stat.exists
