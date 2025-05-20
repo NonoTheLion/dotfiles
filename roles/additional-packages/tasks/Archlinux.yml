@@ -1,0 +1,6 @@
+---
+- name: "Arch | Installing additional-packages"
+  become: true
+  community.general.pacman:
+    name: "{{ additional_packages }}"
+    state: present

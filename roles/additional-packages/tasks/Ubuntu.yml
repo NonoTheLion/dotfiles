@@ -1,0 +1,6 @@
+---
+- name: "Ubuntu | Installing additional-packages"
+  become: true
+  ansible.builtin.apt:
+    name: "{{ additional_packages }}"
+    state: present

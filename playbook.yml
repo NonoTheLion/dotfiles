@@ -3,10 +3,23 @@
 
   roles:
     - update-cache
+    - additional-packages
     - yay
     - fonts
     - kitty
     - p10k
     - tmux
     - neovim
-    - bitwarden
+    # - bitwarden
+
+  vars:
+    additional-packages:
+      - git
+      - curl
+      - unzip
+      - zip
+      - bitwarden
+      - firefox
+      - chromium
+      - thunderbird
+      - vscodium
