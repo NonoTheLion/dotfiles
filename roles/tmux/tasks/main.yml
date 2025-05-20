@@ -13,10 +13,17 @@
     repo: https://github.com/tmux-plugins/tpm
     dest: ~/.tmux/plugins/tpm
 
-- name: "Tmux | Configure tmux"
-  ansible.builtin.copy:
-    src: tmux
-    dest: "{{ ansible_user_dir }}/.config/"
-    mode: "0644"
-    directory_mode: "0755"
+- name: "Tmux | Create symlink to tmux.conf"
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/tmux.conf"
+    dest: "{{ ansible_user_dir }}/.tmux.conf"
+    state: link
     force: true
+
+# - name: "Tmux | Configure tmux"
+#   ansible.builtin.copy:
+#     src: tmux
+#     dest: "{{ ansible_user_dir }}/.config/"
+#     mode: "0644"
+#     directory_mode: "0755"
+#     force: true
