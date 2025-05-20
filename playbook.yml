@@ -13,7 +13,7 @@
     # - bitwarden
 
   vars:
-    additional-packages:
+    additional_packages:
       - git
       - curl
       - unzip
