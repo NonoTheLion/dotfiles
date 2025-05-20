@@ -1,4 +1,10 @@
 ---
+- name: "Yay | Checking Yay install"
+  ansible.builtin.command: which yay
+  register: yay_check
+  ignore_errors: yes
+  changed_when: false
+
 - name: "Yay | Install dependencies"
   become: true
   community.general.pacman:
@@ -6,6 +12,7 @@
       - base-devel
       - git
     state: present
+  when: yay_check.rc != 0
 
 - name: "Yay | Downloading repo"
   ansible.builtin.git:
@@ -14,14 +21,17 @@
     clone: yes
     update: no
   become_user: nobody
+  when: yay_check.rc != 0
 
 - name: "Yay | Building & install..."
   command: makepkg -si --noconfirm
   args:
     chdir: /tmp/yay
   become_user: nobody
+  when: yay_check.rc != 0
 
 - name: "Yay | Removing temp files"
   file:
     path: /tmp/yay
     state: absent
+  when: yay_check.rc != 0
