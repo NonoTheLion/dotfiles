@@ -19,6 +19,4 @@
       - unzip
       - zip
       - bitwarden
-      - firefox
-      - chromium
       - thunderbird
