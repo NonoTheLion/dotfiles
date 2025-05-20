@@ -1,6 +1,0 @@
----
-- name: "Ubuntu | Install Bitwarden"
-  become: true
-  ansible.builtin.apt:
-    name: bitwarden
-    state: present

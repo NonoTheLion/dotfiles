@@ -1,6 +1,0 @@
----
-- name: "Arch | Install Bitwarden"
-  become: true
-  community.general.pacman:
-    name: bitwarden
-    state: present

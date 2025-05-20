@@ -10,7 +10,6 @@
     - p10k
     - tmux
     - neovim
-    # - bitwarden
 
   vars:
     additional_packages: # ⚠️ Ensure these packages are available in your distribution's repositories, otherwise the playbook may fail.
@@ -18,5 +17,8 @@
       - curl
       - unzip
       - zip
+      - tree
+      - vim
+      - neofetch
       - bitwarden
-      - thunderbird
+      # - thunderbird
