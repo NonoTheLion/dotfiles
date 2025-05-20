@@ -1,0 +1,16 @@
+---
+- name: "Fonts | Downloading fonts"
+    git:
+    repo: https://github.com/powerline/fonts.git
+    dest: /tmp/fonts
+    depth: 1
+
+- name: "Fonts | Installing fonts"
+    command: ./install.sh
+    args:
+    chdir: /tmp/fonts
+
+- name: "Fonts | Cleaning..."
+    file:
+    path: /tmp/fonts
+    state: absent
