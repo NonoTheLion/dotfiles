@@ -1,20 +1,20 @@
 #!/bin/bash
 set -e
 
-# Chemin vers ton repo dotfiles local
+# dotfiles local path
 DOTFILES_DIR="$HOME/dotfiles"
 
-# Si le dossier dotfiles n'existe pas, on le clone
+# clone repo (if don't already exist)
 if [ ! -d "$DOTFILES_DIR" ]; then
   echo "Cloning dotfiles repo..."
   git clone git@github.com:NonoTheLion/dotfiles.git "$DOTFILES_DIR"
 fi
 
-# Mise à jour du repo dotfiles
+# update repo
 echo "Updating dotfiles repo..."
 git -C "$DOTFILES_DIR" pull
 
-# Lancer le playbook Ansible en tant qu'utilisateur normal
+# launch playbook.yml
 echo "Running Ansible playbook..."
 ansible-playbook "$DOTFILES_DIR/playbook.yml" --ask-become-pass
 
