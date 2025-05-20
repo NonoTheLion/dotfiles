@@ -3,6 +3,7 @@
 
   roles:
     - update-cache
+    - fonts
     - lazyvim
     - kitty
     - p10k
