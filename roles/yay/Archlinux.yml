@@ -1,0 +1,27 @@
+---
+- name: "Yay | Install dependencies"
+  become: true
+  community.general.pacman:
+    name:
+      - base-devel
+      - git
+    state: present
+
+- name: "Yay | Downloading repo"
+  ansible.builtin.git:
+    repo: https://aur.archlinux.org/yay.git
+    dest: /tmp/yay
+    clone: yes
+    update: no
+  become_user: nobody
+
+- name: "Yay | Building & install..."
+  command: makepkg -si --noconfirm
+  args:
+    chdir: /tmp/yay
+  become_user: nobody
+
+- name: "Yay | Removing temp files"
+  file:
+    path: /tmp/yay
+    state: absent

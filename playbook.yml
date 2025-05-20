@@ -3,8 +3,10 @@
 
   roles:
     - update-cache
+    - yay
     - fonts
-    - lazyvim
     - kitty
     - p10k
     - tmux
+    - neovim
+    - bitwarden

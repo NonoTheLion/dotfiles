@@ -1,7 +1,6 @@
 ---
-- name: "Debian | Install Kitty"
+- name: "Ubuntu | Install Kitty"
   become: true
   ansible.builtin.apt:
     name: kitty
     state: present
-
